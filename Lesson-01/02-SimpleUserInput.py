@@ -3,9 +3,17 @@
 # lets grab some variables
 counter = 1  # Lets count the loop
 total = 1  # and keep track of a total
-target = input("Please enter a number: ")  # And were gonna loop this many times
+# And were gonna loop this many times:
+target = 0  # we put this here to keep it in "scope"
+while True:
+    try:
+        target = int(input("Please enter a number: "))  # Hardcoding is no fun so lets ask the user for a number
+    except ValueError:  # this shows that the user has done something wrong
+        print("ERROR: I dont think you know what a number is, please try again!!!")
+        continue  # This tells the loop to continue and ignore everything else in the block
+    break  # This code will only be called if the continue does not get hit, IE, the input is correct
 
-while counter < int(target):  # This is funky, were gonna keep on going while the counter is less than the target
+while counter < target:  # This is funky, were gonna keep on going while the counter is less than the target
     # So you notice the int(), this is called casting. Specifically explicit casting, this will change "5" into 5.
     # Isnt that fun
     total = total * counter  # Some maths stuff
